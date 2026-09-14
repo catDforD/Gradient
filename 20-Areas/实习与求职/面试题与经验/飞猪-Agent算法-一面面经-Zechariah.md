@@ -16,6 +16,7 @@ source: 用户提供的小红书面经截图（原帖作者：Zechariah，MiniMa
 source_author: Zechariah
 last_checked: "2026-09-14"
 verification_scope: 仅核对用户提供的截图；面试结果、面试时长、面试官背景截图均未提供
+bank_status: 已整理
 ---
 
 # 飞猪 Agent 算法一面面经（Zechariah）
