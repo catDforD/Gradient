@@ -14,6 +14,7 @@ result: 已挂
 source: 用户提供截图（原帖作者：阳光下的雨滴）
 last_checked: "2026-09-13"
 verification_scope: 仅核对用户提供的截图；面试年份按当前记录整理为 2026，具体时间与回答内容待本人补充
+bank_status: 已整理
 ---
 
 # 小红书 Agent 服务端开发实习一面面经

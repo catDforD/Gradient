@@ -15,6 +15,7 @@ source: 用户提供的小红书面经截图
 source_author: AIGC小白入门记
 last_checked: "2026-09-13"
 verification_scope: 仅核对用户提供的截图；题主回答和标准答案均为帖子内容，不等同于官方评分标准
+bank_status: 已整理
 ---
 
 # 小红书 Agent 开发实习生一面面经（AIGC 小白入门记）

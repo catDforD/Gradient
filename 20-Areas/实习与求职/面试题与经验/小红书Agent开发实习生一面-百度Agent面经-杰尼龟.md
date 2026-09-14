@@ -16,6 +16,7 @@ source: 用户提供的小红书面经截图
 source_author: 杰尼龟准备秋招中
 last_checked: "2026-09-13"
 verification_scope: 仅核对用户提供的截图；题目为帖子作者整理，未核对官方面试流程
+bank_status: 已整理
 ---
 
 # 小红书 Agent 开发实习生一面与百度 Agent 面经
