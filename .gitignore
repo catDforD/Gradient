@@ -1,0 +1,11 @@
+# Obsidian 个人工作区状态（每次打开都会变动，无需同步）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# 工具产物与临时文件
+tmp/
+.playwright-mcp/
+
+# 大体积二进制：字体与压缩包（可从模板原地址重新下载）
+20-Areas/实习与求职/简历与作品集/**/fonts/
+20-Areas/实习与求职/简历与作品集/LaTeX简历模板-billryan/resume-zh_CN.zip
