@@ -1,0 +1,118 @@
+% !TeX program = xelatex
+% 岗位定制初稿，2026-09-09。基于 billryan/resume 中文模板。
+% 工作副本；原始模板未修改。完整素材依据与编译命令见“蚂蚁AgentTeam定制简历说明.md”。
+\documentclass{resume}
+% Typography variant: KaiTi body, bold SimSun headings, Times New Roman Latin.
+\usepackage{NotoSerifCJKsc_external}
+\usepackage{xcolor}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[
+  Path=C:/Windows/Fonts/,
+  BoldFont=timesbd.ttf,
+  ItalicFont=timesi.ttf,
+  BoldItalicFont=timesbi.ttf
+]{times.ttf}
+\setCJKmainfont[
+  Path=C:/Windows/Fonts/,
+  BoldFont=simsun.ttc,
+  BoldFeatures={FontIndex=0,FakeBold=2},
+  ItalicFont=simkai.ttf,
+  BoldItalicFont=simsun.ttc,
+  BoldItalicFeatures={FontIndex=0,FakeBold=2}
+]{simkai.ttf}
+\definecolor{muted}{HTML}{555555}
+\definecolor{rulegray}{HTML}{888888}
+\geometry{left=20.5mm,right=20.5mm,top=17mm,bottom=17mm}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.35em,labelsep=0.45em,topsep=4pt,itemsep=3pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\fontsize{12}{15}\selectfont\rmfamily\bfseries}{}{0em}{}[{\color{rulegray}\titlerule[0.35pt]}]
+\titlespacing*{\section}{0pt}{10pt}{7pt}
+\titleformat{\subsection}{\fontsize{11}{14}\selectfont}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\renewcommand{\name}[1]{\centerline{\fontsize{23}{28}\selectfont\rmfamily\bfseries #1}\vspace{8pt}}
+\newcommand{\metainfo}[1]{{\fontsize{9.6}{13.7}\selectfont\color{muted}#1\par}\vspace{1.5pt}}
+\newcommand{\projectlink}[2]{\href{#1}{\textcolor{muted}{#2}}}
+\newcommand{\cvsection}[2]{\section{\texorpdfstring{\makebox[1.35em][l]{\normalfont #1}}{}#2}}
+\pdfstringdefDisableCommands{\def\quad{ }}
+
+% ========== 个人信息与教育背景 ==========
+\newcommand{\CandidateName}{邓鑫宇}
+\newcommand{\CandidatePhone}{13458601548}
+\newcommand{\CandidateEmail}{husdengsh@gmail.com}
+\newcommand{\CandidateSchool}{浙江大学}
+\newcommand{\CandidateMajor}{电子信息}
+\newcommand{\CandidateDegree}{硕士（在读）}
+\newcommand{\EducationDates}{2025 - 至今} % TODO: 预计毕业时间待本人补充
+\newcommand{\BachelorSchool}{西南交通大学}
+\newcommand{\BachelorMajor}{电子信息}
+\newcommand{\BachelorDegree}{学士}
+\newcommand{\BachelorDates}{2021 - 2025}
+\hypersetup{pdftitle={邓鑫宇 - 实习简历},pdfauthor={邓鑫宇},hidelinks}
+
+\begin{document}
+\fontsize{10.5}{15}\selectfont
+\raggedright
+\name{\CandidateName}
+\centerline{\fontsize{9.5}{12}\selectfont
+  {\color{muted}\faEnvelope}\hspace{0.4em}\href{mailto:\CandidateEmail}{\CandidateEmail}
+  \quad {\color{rulegray}\textperiodcentered}\quad
+  {\color{muted}\faPhone}\hspace{0.4em}\CandidatePhone
+  \quad {\color{rulegray}\textperiodcentered}\quad
+  {\color{muted}\faGithub}\hspace{0.4em}\href{https://github.com/catDforD}{catDforD}
+  \quad {\color{rulegray}\textperiodcentered}\quad
+  {\color{muted}\faGlobe}\hspace{0.4em}\href{https://catdfd.com/}{catdfd.com}}
+
+\cvsection{\faGraduationCap}{教育背景}
+\datedline{\textbf{\CandidateSchool}\quad 杭州}{\EducationDates}
+\metainfo{\CandidateMajor\quad \CandidateDegree}
+\vspace{4pt}
+\datedline{\textbf{\BachelorSchool}\quad 成都}{\BachelorDates}
+\metainfo{\BachelorMajor\quad \BachelorDegree}
+
+\cvsection{\faCode}{开源项目}
+% Morrow 改版 v1：依据主分支 095ba5c 与本地项目材料重写；原始简历源码保留。
+\datedsubsection{\href{https://github.com/catDforD/morrow}{\textbf{Morrow}}\quad \textnormal{开发与维护}}{2026.05 - 至今}
+\begin{itemize}
+  \item 基于 Rust 开发 CLI / Web 编码 Agent，将执行循环与模型、工具适配解耦，两端复用统一运行时，支持流式响应及 MCP 工具接入。
+  \item 实现会话持久化与按 token 预算触发的上下文压缩，以追加式事实日志重建会话状态；压缩模型可见历史的同时保留执行记录，支持历史恢复与会话续接。
+  \item 实现探索、规划、执行、审查四类子 Agent 的调度与权限约束，通过同会话内的共享写入许可协调主 Agent 与执行类子 Agent 的文件修改和 Shell 操作。
+  \item 接入执行前权限审批与验收 Hook，支持将检查反馈回传模型继续处理；构建脚本化模型与工具的回归评测，覆盖工具结果回灌、审批和异常路径，并约束调用次数。
+\end{itemize}
+
+\datedsubsection{\href{https://github.com/AstrBotDevs/AstrBot/pulls?q=is\%3Apr+author\%3AcatDforD}{\textbf{AstrBot}}\quad \textnormal{开源贡献者}}{2026.02 - 至今}
+\begin{itemize}
+  \item 修复定时任务唤醒 Agent 时未保留备用模型配置的问题，为 Ollama 接入增加关闭思考模式的开关。
+  \item 修复侧边栏分组展开与状态持久化，统一插件界面提示，改善知识库上传错误反馈。
+\end{itemize}
+
+% TODO: SDK 的审核对象待补；角色、时间与两条贡献已由本人确认，不声称主导整个架构。
+\datedsubsection{\href{https://github.com/united-pooh/astrbot-sdk}{\textbf{AstrBot SDK}}\quad \textnormal{核心开发}}{2026.05 - 2026.06}
+\begin{itemize}
+  \item 修复请求级系统事件覆盖信息的跨层传递丢失问题，并补充回归测试。
+  \item 在插件初始化时生成 Agent 开发指引与项目说明，为 AI 编程提供规范与上下文。
+\end{itemize}
+
+\cvsection{\faBriefcase}{实习经历}
+% TODO: 正式岗位名待补；不把工作内容直接当作正式职称。
+\datedsubsection{\textbf{晶泰科技}\quad 未来化学部实习 · 深圳}{2026.03 - 2026.06}
+\metainfo{ChemSec-Eval：化学研发场景的大模型与 Agent 安全评测、护栏加固\quad\projectlink{https://1371149.github.io/jingtai.github.io/}{成果展示}}
+\begin{itemize}
+  \item 基于 Inspect AI 搭建统一安全评测体系与数据集，覆盖内容、Agent 工具及多轮隐私；结合大模型评判、规则回退与异常分类，开发适配服务，实现业务 Agent 统一接入与评测流程复用。
+  \item 构建可独立集成的 Agent 安全护栏，结合知识检索、多轮隐私规则与响应扫描，通过会话级状态管理实现风险累积与会话隔离；业务 Agent 接入护栏后，内容、Agent 工具及隐私攻击成功率分别由 \mbox{34.8\%、58.7\%、68.9\%} 降至 \mbox{4.4\%、6.1\%、4.7\%。}
+\end{itemize}
+
+\cvsection{\faFlask}{多智能体研究}
+% 实验设计分工由本人补充确认；系统整体方法与个人贡献分开表述，不归因论文整体指标。
+\datedsubsection{\textbf{MAS²}\quad 多智能体系统研究}{2024 - 2025}
+\begin{itemize}
+  \item 参与 MAS² 多智能体系统研究，负责实验设计工作；系统通过 Generator、Implementer、Rectifier 完成架构生成与执行反馈纠错。相关论文发表于 \href{https://iclr.cc/virtual/2026/poster/10007200}{ICLR 2026}。\quad\projectlink{https://openreview.net/forum?id=qumy27hMDY}{论文链接}
+\end{itemize}
+
+\cvsection{\faCogs}{技术实践}
+\textbf{工程开发：}Python / Rust，异步编程、HTTP API、SSE / WebSocket、自动化测试与 GitHub CI。\par
+\textbf{Agent 开发：}工具调用编排、MCP 集成、上下文压缩、会话持久化、\mbox{多智能体调度与权限审批。}\par
+\textbf{AI 协作开发：}Claude Code / Codex、OpenSpec 规范驱动开发、Git / GitHub 协作。
+% TODO: 补充一条真实的 AI 协作开发案例，对应本人提供的工具与实践表述。
+\end{document}
+

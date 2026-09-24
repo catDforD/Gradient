@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "profile": {
+    "candidate_id": "catDforD",
+    "target_roles": [
+      "Agent 开发 / Agent Harness 实习"
+    ],
+    "updated_at": "2026-09-22"
+  },
+  "claims": [
+    {
+      "id": "morrow-001",
+      "source_fact": "原简历确认开发 CLI/Web 编码 Agent 并接入 MCP；源码中 core 定义 Model/ToolRuntime 端口，CLI 与 server 调用 agent-runtime。",
+      "candidate_wording": "基于 Rust 开发 CLI / Web 编码 Agent，将执行循环与模型、工具适配解耦，两端复用统一运行时，支持流式响应及 MCP 工具接入。",
+      "sources": [
+        {
+          "type": "user_note",
+          "location": "10-Projects/2026-秋季实习/面试准备/蚂蚁AgentTeam-面试准备.md.md",
+          "public": false,
+          "note": "用户已有材料写明 Morrow 代码由本人和 Codex 实现；并有执行链、压缩、权限和子 Agent 的第一人称说明。保留 AI 协作边界。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-core/src/model.rs#L61",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-core/src/tool.rs#L94",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-cli/src/run.rs#L325",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-server/src/turns.rs#L447",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-tools/src/mcp.rs#L330",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent 开发 / Harness 方向简历",
+        "Morrow 项目改版 v1"
+      ],
+      "interview_details": {
+        "decisions": [
+          "核心定义接口、适配器实现接口，两端共用运行时。"
+        ],
+        "difficulties": [
+          "CLI 和 Web 分别在哪里进入运行时？更换模型供应商时，哪些层需要改变？"
+        ],
+        "verification": [
+          "用户已有材料与固定提交源码交叉核对；不等同于验证本人现场口述或最新测试通过。"
+        ],
+        "result": "形成候选稿中的可核对工程能力，无新增性能指标。"
+      },
+      "boundary": "本人开发与维护、AI 辅助实现。只陈述已核对的工程结构，不声称独立手写全部代码，不把 OpenAI/MCP 上游能力计为个人发明。",
+      "risk_notes": [
+        "本轮仅做静态源码核对与简历文档检查。"
+      ],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "morrow-002",
+      "source_fact": "原简历确认上下文压缩与会话持久化；现实现以追加式 Session fact log 保存事实，以投影恢复状态，并从摘要和后续已完成轮次重建活动上下文。",
+      "candidate_wording": "实现会话持久化与按 token 预算触发的上下文压缩，以追加式事实日志重建会话状态；压缩模型可见历史的同时保留执行记录，支持历史恢复与会话续接。",
+      "sources": [
+        {
+          "type": "user_note",
+          "location": "10-Projects/2026-秋季实习/面试准备/蚂蚁AgentTeam-面试准备.md.md",
+          "public": false,
+          "note": "用户已有材料写明 Morrow 代码由本人和 Codex 实现；并有执行链、压缩、权限和子 Agent 的第一人称说明。保留 AI 协作边界。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/session_handle.rs#L338",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/session_projection.rs#L1",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/compaction.rs#L439",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/compaction.rs#L874",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/docs/session-consistency-protocol.md#L39",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent 开发 / Harness 方向简历",
+        "Morrow 项目改版 v1"
+      ],
+      "interview_details": {
+        "decisions": [
+          "完整执行历史与模型可见上下文分离；压缩只推进上下文摘要边界。"
+        ],
+        "difficulties": [
+          "压缩后如何恢复会话？失败轮次、工具结果和未完成任务分别保留在哪里？"
+        ],
+        "verification": [
+          "用户已有材料与固定提交源码交叉核对；不等同于验证本人现场口述或最新测试通过。"
+        ],
+        "result": "形成候选稿中的可核对工程能力，无新增性能指标。"
+      },
+      "boundary": "恢复指历史和上下文恢复，不承诺崩溃前工具操作精确一次执行或自动续跑未完成任务；token 是启发式估算，不是精确 tokenizer 计数。",
+      "risk_notes": [
+        "本轮仅做静态源码核对与简历文档检查。"
+      ],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "morrow-003",
+      "source_fact": "原简历与用户面试笔记确认多 Agent 调度和角色分工；源码包含四类角色、并发槽位及在同一 SessionRuntime 内共享的写入信号量。",
+      "candidate_wording": "实现探索、规划、执行、审查四类子 Agent 的调度与权限约束，通过同会话内的共享写入许可协调主 Agent 与执行类子 Agent 的文件修改和 Shell 操作。",
+      "sources": [
+        {
+          "type": "user_note",
+          "location": "10-Projects/2026-秋季实习/面试准备/蚂蚁AgentTeam-面试准备.md.md",
+          "public": false,
+          "note": "用户已有材料写明 Morrow 代码由本人和 Codex 实现；并有执行链、压缩、权限和子 Agent 的第一人称说明。保留 AI 协作边界。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/subagent_supervisor.rs#L34",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/subagent_supervisor.rs#L745",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-runtime/src/subagent_supervisor.rs#L979",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-server/src/state.rs#L389",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-tools/src/registry.rs#L685",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent 开发 / Harness 方向简历",
+        "Morrow 项目改版 v1"
+      ],
+      "interview_details": {
+        "decisions": [
+          "角色工具白名单与父权限取交集；Worker 先获取写入许可再获取执行槽。"
+        ],
+        "difficulties": [
+          "两个 Worker 同时修改文件怎样排队？跨会话共享同一目录时是否仍受此许可保护？"
+        ],
+        "verification": [
+          "用户已有材料与固定提交源码交叉核对；不等同于验证本人现场口述或最新测试通过。"
+        ],
+        "result": "形成候选稿中的可核对工程能力，无新增性能指标。"
+      },
+      "boundary": "共享写入许可限定同一会话运行时，非跨会话/跨进程的全工作区互斥；权限审批不是 OS 沙箱，外部进程和其他会话不受该写许可覆盖。",
+      "risk_notes": [
+        "本轮仅做静态源码核对与简历文档检查。"
+      ],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "morrow-004",
+      "source_fact": "原简历确认权限审批与验收 Hook；源码包含执行前审批、after_turn 继续/完成/失败分支，以及由脚本化模型和工具驱动的确定性回归与调用预算检查。",
+      "candidate_wording": "接入执行前权限审批与验收 Hook，支持将检查反馈回传模型继续处理；构建脚本化模型与工具的回归评测，覆盖工具结果回灌、审批和异常路径，并约束调用次数。",
+      "sources": [
+        {
+          "type": "user_note",
+          "location": "10-Projects/2026-秋季实习/面试准备/蚂蚁AgentTeam-面试准备.md.md",
+          "public": false,
+          "note": "用户已有材料写明 Morrow 代码由本人和 Codex 实现；并有执行链、压缩、权限和子 Agent 的第一人称说明。保留 AI 协作边界。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-tools/src/registry.rs#L1224",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-tools/src/mcp.rs#L640",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-core/src/agent.rs#L467",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-eval/src/suite.rs#L19",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/crates/agent-eval/src/runner.rs#L433",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/Morrow/blob/095ba5ca1a5f7d613bf78c15e481c3f696d7e405/.github/workflows/ci.yml#L34",
+          "public": true,
+          "note": "2026-09-22 固定提交源码静态核对；未在本轮运行 Rust 测试。"
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent 开发 / Harness 方向简历",
+        "Morrow 项目改版 v1"
+      ],
+      "interview_details": {
+        "decisions": [
+          "审批在副作用之前检查；用脚本化模型隔离真实模型采样，检查行为和预算。"
+        ],
+        "difficulties": [
+          "验收 Hook 连续要求继续时何时停止？脚本化回归能证明什么，不能证明什么？"
+        ],
+        "verification": [
+          "用户已有材料与固定提交源码交叉核对；不等同于验证本人现场口述或最新测试通过。"
+        ],
+        "result": "形成候选稿中的可核对工程能力，无新增性能指标。"
+      },
+      "boundary": "验收 Hook 取决于配置，最多接收 3 次继续，超限警告后完成，并非测试不通过绝不结束；确定性回归验证编排行为，不代表真实模型成功率或性能提升。",
+      "risk_notes": [
+        "本轮仅做静态源码核对与简历文档检查。"
+      ],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "morrow-award-pending",
+      "source_fact": "已有面试笔记称基于 Morrow 开发的应用获晶泰内部创新 Agent 应用开发大赛知识管理与办公赛道第一名。",
+      "candidate_wording": "【待补：比赛正式名称、应用名称、获奖日期与个人/团队职责确认后再加入】",
+      "sources": [
+        {
+          "type": "user_note",
+          "location": "10-Projects/2026-秋季实习/面试准备/蚂蚁AgentTeam-面试准备.md.md",
+          "public": false,
+          "note": "用户已有材料写明 Morrow 代码由本人和 Codex 实现；并有执行链、压缩、权限和子 Agent 的第一人称说明。保留 AI 协作边界。"
+        }
+      ],
+      "responsibility_level": "参与",
+      "verification_status": "待确认",
+      "allowed_uses": [],
+      "interview_details": {
+        "decisions": [],
+        "difficulties": [],
+        "verification": [
+          "需本人补充获奖归属及准确表述。"
+        ],
+        "result": null
+      },
+      "boundary": "不能将基于 Morrow 的应用获奖直接写成框架本身获奖。",
+      "risk_notes": [
+        "本版简历不纳入该主张。"
+      ],
+      "last_verified": null
+    }
+  ]
+}

@@ -6,10 +6,10 @@ published:
 created: 2026-07-26
 description: "On the the engineering challenges and lessons learned from building Claude's Research system"
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/ai-agent"
-  - "topic/multi-agent"
+  - clippings
+  - type/source-note
+  - topic/agent
+  - topic/agent/multi-agent
 type: source-note
 aliases:
   - "构建多 Agent 研究系统"

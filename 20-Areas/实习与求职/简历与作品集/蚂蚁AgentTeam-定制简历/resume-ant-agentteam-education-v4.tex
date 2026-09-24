@@ -1,0 +1,142 @@
+% !TeX program = xelatex
+% 晶泰实习 + DeePX / RouterTamperBench 科研经历改版，2026-09-22。
+% 基于当前楷体正文版；本版本为独立两页工作副本，保留既有简历文件。
+\documentclass{resume}
+% Typography variant: KaiTi body, bold SimSun headings, Times New Roman Latin.
+\usepackage{NotoSerifCJKsc_external}
+\usepackage{xcolor}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[
+  Path=C:/Windows/Fonts/,
+  BoldFont=timesbd.ttf,
+  ItalicFont=timesi.ttf,
+  BoldItalicFont=timesbi.ttf
+]{times.ttf}
+\setCJKmainfont[
+  Path=C:/Windows/Fonts/,
+  BoldFont=simsun.ttc,
+  BoldFeatures={FontIndex=0,FakeBold=2},
+  ItalicFont=simkai.ttf,
+  BoldItalicFont=simsun.ttc,
+  BoldItalicFeatures={FontIndex=0,FakeBold=2}
+]{simkai.ttf}
+\definecolor{muted}{HTML}{555555}
+\definecolor{rulegray}{HTML}{888888}
+\geometry{left=20.5mm,right=20.5mm,top=17mm,bottom=17mm}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=1.35em,labelsep=0.45em,topsep=4pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\fontsize{12}{15}\selectfont\rmfamily\bfseries}{}{0em}{}[{\color{rulegray}\titlerule[0.35pt]}]
+\titlespacing*{\section}{0pt}{10pt}{7pt}
+\titleformat{\subsection}{\fontsize{11}{14}\selectfont}{}{0em}{}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+\renewcommand{\name}[1]{\centerline{\fontsize{23}{28}\selectfont\rmfamily\bfseries #1}\vspace{8pt}}
+\newcommand{\metainfo}[1]{{\fontsize{9.6}{13.7}\selectfont\color{muted}#1\par}\vspace{1.5pt}}
+\newcommand{\projectlink}[2]{\href{#1}{\textcolor{muted}{#2}}}
+\newcommand{\skillline}[2]{{\hangindent=5.6em\hangafter=1\noindent\makebox[5.6em][l]{\textbf{#1：}}#2\par}\vspace{2pt}}
+\newcommand{\cvsection}[2]{\section{\texorpdfstring{\makebox[1.35em][l]{\normalfont #1}}{}#2}}
+\pdfstringdefDisableCommands{\def\quad{ }}
+
+% ========== 个人信息与教育背景 ==========
+\newcommand{\CandidateName}{邓鑫宇}
+\newcommand{\CandidatePhone}{13458601548}
+\newcommand{\CandidateEmail}{husdengsh@gmail.com}
+\newcommand{\CandidateSchool}{浙江大学}
+\newcommand{\CandidateMajor}{电子信息}
+\newcommand{\CandidateDegree}{硕士（在读）}
+\newcommand{\EducationDates}{2025 - 至今}
+\newcommand{\BachelorSchool}{西南交通大学}
+\newcommand{\BachelorMajor}{电子信息}
+\newcommand{\BachelorDegree}{学士}
+\newcommand{\BachelorDates}{2021 - 2025}
+\hypersetup{pdftitle={邓鑫宇 - 教育背景补充 v4},pdfauthor={邓鑫宇},hidelinks}
+
+\begin{document}
+\fontsize{10.5}{16}\selectfont
+\raggedright
+\name{\CandidateName}
+\centerline{\fontsize{9.5}{12}\selectfont
+  {\color{muted}\faEnvelope}\hspace{0.4em}\href{mailto:\CandidateEmail}{\CandidateEmail}
+  \quad {\color{rulegray}\textperiodcentered}\quad
+  {\color{muted}\faPhone}\hspace{0.4em}\CandidatePhone
+  \quad {\color{rulegray}\textperiodcentered}\quad
+  {\color{muted}\faGithub}\hspace{0.4em}\href{https://github.com/catDforD}{catDforD}
+  \quad {\color{rulegray}\textperiodcentered}\quad
+  {\color{muted}\faGlobe}\hspace{0.4em}\href{https://catdfd.com/}{catdfd.com}}
+
+\cvsection{\faGraduationCap}{教育背景}
+\datedline{\textbf{\CandidateSchool}\quad 控制科学与工程学院\quad 电子信息\quad 硕士}{\EducationDates}
+{\fontsize{10}{14}\selectfont\hspace{0.25em}\textbullet\ 推免研究生\quad 研究方向：LLM Agent、Multi-Agent Systems\par}
+\vspace{4pt}
+\datedline{\textbf{\BachelorSchool}\quad 电气工程学院\quad 电子信息\quad 学士}{\BachelorDates}
+{\fontsize{10}{14}\selectfont\hspace{0.25em}\textbullet\ GPA：3.84/4.0\quad 专业排名：1/36\quad 英语水平：CET-4：572\quad CET-6：552\par}
+
+\cvsection{\faBriefcase}{实习经历}
+\datedsubsection{\textbf{晶泰科技}\quad 未来化学部实习 · 深圳}{2026.03 - 2026.06}
+\metainfo{ChemSec-Eval：化学研发场景的大模型与 Agent 安全评测、护栏加固\quad\href{https://1371149.github.io/jingtai.github.io/}{\textcolor[HTML]{1F5EA8}{\underline{查看成果}\,\ensuremath{\nearrow}}}}
+\begin{itemize}
+  \item 基于 Inspect AI 搭建化学场景安全评测链路，覆盖内容、Agent 工具和多轮隐私；开发单/批量数据生成与 LLM-as-a-judge 评分，保留规则回退和异常分类，支持模型与业务 Agent 接入。
+  \item 开发 XCurve 的 OpenAI-compatible 适配服务和接口测试，保留多轮消息、会话隔离与 SSE 工具 trace，使业务 Agent 可复用 Inspect 评测流程。
+  \item 集成化学风险知识检索、会话级隐私累积与响应扫描，封装可独立接入的组合护栏；业务 Agent 接入护栏后，三类攻击成功率由 \mbox{34.8\%、58.7\%、68.9\%} 降至 \mbox{4.4\%、6.1\%、4.7\%}，护栏覆盖率为 94.3\%。
+\end{itemize}
+
+\metainfo{\projectlink{https://github.com/catDforD/Morrow/tree/feat/robot-agent}{DeePX / 小π}：晶泰 AI Agent 挑战赛冠军\quad ·\quad Morrow Agent Core\quad\href{https://catdford.github.io/Morrow/deepx-robot-pitch.html}{\textcolor[HTML]{1F5EA8}{\underline{项目展示}\,\ensuremath{\nearrow}}}}
+\begin{itemize}
+  \item 利用 Morrow Agent 核心完成比赛 Agent 的云端编排与调控，接入飞书 / \texttt{lark-cli}、定时触发与 WebSocket 流式输出，支撑桌面 AI 伙伴的主动提醒和实时交互。
+  \item 重构 Agent 调用链，将 StackChan 与 lark-cli 之间的交互由 6 跳收敛至 4 跳，并以 Morrow 统一编排 OpenClaw 与插件调用，完成日程/消息、Askflow 与飞书审批闭环演示。
+  \item 负责云端部署、Agent 核心接入与运行调控；团队以 DeepX · 晶曜队参赛并获得赛事第一名，个人贡献聚焦 Agent runtime 与实时链路。
+\end{itemize}
+
+\cvsection{\faCode}{开源项目}
+\datedsubsection{\href{https://github.com/catDforD/morrow}{\textbf{Morrow}}\quad \textnormal{开发与维护}}{2026.05 - 至今}
+\begin{itemize}
+  \item 基于 Rust 开发 CLI / Web 编码 Agent，将执行循环与模型、工具适配解耦，两端复用统一运行时，支持流式响应及 MCP 工具接入。
+  \item 实现会话持久化与按 token 预算触发的上下文压缩，以追加式事实日志重建会话状态；压缩模型可见历史的同时保留执行记录，支持历史恢复与会话续接。
+  \item 实现探索、规划、执行、审查四类子 Agent 的调度与权限约束，通过同会话内的共享写入许可协调主 Agent 与执行类子 Agent 的文件修改和 Shell 操作。
+  \item 接入执行前权限审批与验收 Hook，支持将检查反馈回传模型继续处理；构建脚本化模型与工具的回归评测，覆盖工具结果回灌、审批和异常路径，并约束调用次数。
+\end{itemize}
+
+\datedsubsection{\href{https://github.com/vastsa/PI-Desktop}{\textbf{PI-Desktop}}\quad 5.2k\ensuremath{\star}\quad\textnormal{开源贡献者}}{2026.09 - 至今}
+\begin{itemize}
+  \item 为桌面 Agent Runtime 补齐 SYSTEM.md / APPEND\_SYSTEM.md 支持，处理项目级优先级、提示词组装顺序与配置变更后的会话级重建，并补充运行时与启动链路测试。
+  \item 修复文件/文件夹选择器重复弹窗，在 Renderer 与 Electron Main IPC 双侧增加并发保护；将 AI 设置下拉项改为应用内菜单，统一主题与键盘交互，并补充回归测试。
+\end{itemize}
+
+\newpage
+\cvsection{\faCode}{开源项目（续）}
+\datedsubsection{\href{https://github.com/AstrBotDevs/AstrBot/pulls?q=is\%3Apr+author\%3AcatDforD}{\textbf{AstrBot}}\quad 40.8k\ensuremath{\star}\quad\textnormal{开源贡献者}}{2026.02 - 至今}
+\begin{itemize}
+  \item 修复定时任务唤醒 Agent 时未保留备用模型配置的问题，为 Ollama 接入增加关闭思考模式的开关。
+  \item 修复侧边栏分组展开与状态持久化，统一插件界面提示，改善知识库上传错误反馈。
+\end{itemize}
+\datedsubsection{\href{https://github.com/united-pooh/astrbot-sdk}{\textbf{AstrBot SDK}}\quad \textnormal{核心开发}}{2026.05 - 2026.06}
+\begin{itemize}
+  \item 修复请求级系统事件覆盖信息的跨层传递丢失问题，并补充回归测试。
+  \item 在插件初始化时生成 Agent 开发指引与项目说明，为 AI 编程提供规范与上下文。
+\end{itemize}
+
+\cvsection{\faFlask}{科研经历}
+\datedsubsection{\href{https://github.com/catDforD/router_tamper_bench}{\textbf{RouterTamperBench}}\quad \textnormal{恶意 LLM 路由器安全基准 · USENIX 2027 在投}}{2026 - 至今}
+\begin{itemize}
+  \item 设计跨协议评测链路，将请求、工具定义 / 结果、工具调用和最终回答统一为 canonical semantic object，桥接 OpenAI Responses、Chat Completions 与 Anthropic Messages，覆盖流式 SSE。
+  \item 构建可复现数据集流水线与双阶段 tamper runtime，覆盖 143 个任务、43 种变体、939 个案例、13 类攻击族；支持参数/身份替换、结果篡改、调用插入/删除/重放，记录投递、执行、影响与恢复。
+  \item 参与 5 个 Agent、6 个模型、3 种 API 格式组成的 30 种配置实验与结果分析，测得平均攻击成功率 31.9\%；789 个可比传播案例中，下游无独立可信参照时成功率 84.1\%，具备时 6.0\%。
+\end{itemize}
+
+\datedsubsection{\projectlink{https://openreview.net/forum?id=qumy27hMDY}{\textbf{MAS²}}\quad 多智能体系统研究 · ICLR 2026 · \projectlink{https://openreview.net/forum?id=qumy27hMDY}{论文链接}}{2024 - 2025}
+\begin{itemize}
+  \item 参与 MAS² 多智能体系统研究，负责实验设计与结果分析；围绕 Generator、Implementer、Rectifier 三类角色，验证架构生成、配置与执行反馈纠错闭环。
+  \item 参与多任务、多模型实验与泛化评估；实验显示，深度研究、代码生成等场景相对先进 MAS 最高提升 19.6\%，在未见过的模型骨干上仍有最高 15.1\% 提升，录用 ICLR 2026（Poster）。
+\end{itemize}
+
+\cvsection{\faCogs}{技术能力}
+\skillline{工程开发}{Rust / Python 异步与并发、SSE / WebSocket 流式链路、回归测试与 GitHub CI。}
+\skillline{Agent 系统}{工具调用编排、MCP 集成、上下文压缩、会话持久化、多智能体调度与权限审批。}
+\skillline{系统架构}{事件驱动、插件化设计、跨协议适配与运行时解耦。}
+\skillline{安全评测}{LLM-as-a-judge、对抗攻击评测、数据集构建、知识检索与隐私护栏。}
+\skillline{开发协作}{Claude Code / Codex、OpenSpec、Git / GitHub 协作。}
+\end{document}
+
+
+
+

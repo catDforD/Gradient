@@ -5,7 +5,7 @@ aliases:
 tags:
   - type/concept
   - topic/agent
-  - topic/tool-calling
+  - topic/agent/tool-calling
 ---
 
 # PTC

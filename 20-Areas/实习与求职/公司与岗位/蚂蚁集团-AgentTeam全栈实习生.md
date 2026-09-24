@@ -4,7 +4,7 @@ status: 准备中
 tags:
   - type/internship-opportunity
   - topic/career
-  - topic/multi-agent-systems
+  - topic/agent/multi-agent
 company: "蚂蚁集团（截图称蚂蚁，具体团队待确认）"
 role: "Agent Team 全栈实习生（日常实习）"
 location: "杭州，蚂蚁 A 空间"

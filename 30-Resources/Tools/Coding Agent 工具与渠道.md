@@ -2,7 +2,7 @@
 type: resource
 tags:
   - type/resource
-  - topic/coding-agent
+  - topic/agent/coding-agent
 ---
 
 # Coding Agent 工具与渠道

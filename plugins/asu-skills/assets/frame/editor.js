@@ -1,0 +1,312 @@
+(() => {
+  const roots = Array.from(document.querySelectorAll('.resume-page, main.sheet'));
+  const root = roots[0];
+  if (!root) return;
+  const changed = () => document.dispatchEvent(new Event('resume-change'));
+  const editButton = document.querySelector('[data-action="edit"]');
+  const fontSelect = document.querySelector('[data-action="font"]');
+  const colorInput = document.querySelector('[data-action="color"]');
+  const boldButton = document.querySelector('[data-action="bold"]');
+  const photoButton = document.querySelector('[data-action="photo"]');
+  const saveButton = document.querySelector('[data-action="save"]');
+  const pdfButton = document.querySelector('[data-action="pdf"]');
+  const photoInput = document.querySelector('[data-photo-input]');
+  const photoFrame = document.querySelector('.photo-frame, .profile-photo-slot');
+  const photoImage = photoFrame?.querySelector('img');
+  const initialPhotoSource = photoImage?.getAttribute('src') || '';
+  if (photoFrame && initialPhotoSource && !/fictional-resume-photo\.png(?:[?#].*)?$/i.test(initialPhotoSource)) {
+    photoFrame.classList.add('has-photo');
+  }
+  let savedRange = null;
+  document.addEventListener('selectionchange', () => {
+    const selection = window.getSelection();
+    if (!selection || !selection.rangeCount || !roots.some((page) => page.contains(selection.anchorNode) && page.contains(selection.focusNode))) return;
+    savedRange = selection.getRangeAt(0).cloneRange();
+  });
+  const restoreSelection = () => {
+    if (!savedRange) return;
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(savedRange);
+  };
+  const applyFormat = (command, value = null) => {
+    if (root.getAttribute('contenteditable') !== 'true') editButton.click();
+    root.focus();
+    restoreSelection();
+    document.execCommand(command, false, value);
+    changed();
+  };
+  editButton?.addEventListener('click', () => {
+    const editing = root.getAttribute('contenteditable') === 'true';
+    roots.forEach((page) => {
+      page.setAttribute('contenteditable', String(!editing));
+      page.classList.toggle('is-editing', !editing);
+    });
+    editButton.textContent = editing ? '编辑' : '完成编辑';
+    if (!editing) root.focus();
+  });
+  if (root.getAttribute('contenteditable') === 'true') editButton.textContent = '完成编辑';
+  document.querySelectorAll('.resume-toolbar button').forEach((button) => {
+    button.addEventListener('mousedown', (event) => event.preventDefault());
+  });
+  document.querySelectorAll('[data-command]').forEach((button) => {
+    button.addEventListener('click', () => applyFormat(button.dataset.command));
+  });
+  document.querySelector('#fontSize')?.addEventListener('change', (event) => {
+    restoreSelection();
+    const selection = window.getSelection();
+    if (!savedRange || !selection.rangeCount || selection.isCollapsed) return;
+    const range = selection.getRangeAt(0);
+    const wrapper = document.createElement('span');
+    wrapper.style.fontSize = event.target.value;
+    wrapper.appendChild(range.extractContents());
+    range.insertNode(wrapper);
+    range.selectNodeContents(wrapper);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    savedRange = range.cloneRange();
+    changed();
+  });
+  photoButton?.addEventListener('click', () => photoInput?.click());
+  document.addEventListener('click', (event) => {
+    if (event.target.closest?.('.profile-photo-slot')) photoInput?.click();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.target.closest?.('.profile-photo-slot') && ['Enter', ' '].includes(event.key)) {
+      event.preventDefault();
+      photoInput?.click();
+    }
+  });
+  photoInput?.addEventListener('change', (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file || !file.type.startsWith('image/') || !photoFrame) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const photoFrame = document.querySelector('.photo-frame, .profile-photo-slot');
+      if (!photoFrame) return;
+      let image = photoFrame.querySelector('img');
+      if (!image) {
+        image = document.createElement('img');
+        image.className = 'profile-photo';
+        image.alt = '证件照';
+        photoFrame.prepend(image);
+      }
+      image.src = reader.result;
+      photoFrame.classList.add('has-photo');
+      photoFrame.querySelector('.photo-placeholder')?.remove();
+      setToolStatus('照片已替换');
+      changed();
+    };
+    reader.readAsDataURL(file);
+  });
+  const localFontGroup = fontSelect ? fontSelect.querySelector('[data-local-font-group]') : null;
+  const localFontButton = document.querySelector('[data-action="local-fonts"]');
+  const importFontButton = document.querySelector('[data-action="import-font"]');
+  const fontFileInput = document.querySelector('[data-font-file-input]');
+  const toolbarTitle = document.querySelector('.toolbar-title');
+  const localFontValuePrefix = 'local:';
+  const removeLocalFontsValue = '__remove_local_fonts__';
+  const installedFontBlocklist = ['icon', 'emoji', 'symbol', 'wingdings', 'webdings', 'dingbat', 'awesome'];
+  const fontFaces = new Map();
+  let localFonts = [];
+  let installedFontNames = [];
+  let statusTimer = null;
+
+  const setToolStatus = (text) => {
+    if (!toolbarTitle) return;
+    toolbarTitle.textContent = text;
+    window.clearTimeout(statusTimer);
+    statusTimer = window.setTimeout(() => { toolbarTitle.textContent = 'HTML 简历'; }, 3000);
+  };
+  const registerLocalFont = async (name, dataUrl) => {
+    const fontFace = new FontFace(name, `url(${dataUrl})`);
+    await fontFace.load();
+    const previous = fontFaces.get(name);
+    if (previous) document.fonts.delete(previous);
+    document.fonts.add(fontFace);
+    fontFaces.set(name, fontFace);
+  };
+  const refreshLocalFontOptions = () => {
+    if (!localFontGroup) return;
+    const names = [];
+    installedFontNames.forEach((name) => {
+      if (!names.includes(name)) names.push(name);
+    });
+    localFonts.forEach((font) => {
+      if (!names.includes(font.name)) names.push(font.name);
+    });
+    localFontGroup.innerHTML = '';
+    names.forEach((name) => {
+      const option = document.createElement('option');
+      option.value = localFontValuePrefix + name;
+      option.textContent = name;
+      localFontGroup.appendChild(option);
+    });
+    if (names.length) {
+      const removeOption = document.createElement('option');
+      removeOption.value = removeLocalFontsValue;
+      removeOption.textContent = '移除全部本地字体';
+      localFontGroup.appendChild(removeOption);
+    }
+  };
+  const importFontFile = (file) => new Promise((resolve) => {
+    const name = (file.name || '本地字体').replace(/\.(ttf|otf|ttc|woff2?|sfnt)$/i, '').trim() || '本地字体';
+    const reader = new FileReader();
+    reader.onload = async () => {
+      const dataUrl = String(reader.result || '');
+      try {
+        await registerLocalFont(name, dataUrl);
+      } catch (error) {
+        setToolStatus('字体文件无法解析');
+        resolve();
+        return;
+      }
+      localFonts = localFonts.filter((font) => font.name !== name);
+      localFonts.push({ name, data: dataUrl });
+      setToolStatus('本地字体已导入（刷新后需重新导入）');
+      resolve();
+    };
+    reader.onerror = () => {
+      setToolStatus('字体文件无法读取');
+      resolve();
+    };
+    reader.readAsDataURL(file);
+  });
+  const loadInstalledFonts = async () => {
+    if (typeof window.queryLocalFonts !== 'function') {
+      setToolStatus('当前浏览器不支持读取本地字体，可用「导入字体」');
+      return;
+    }
+    setToolStatus('正在读取本地字体...');
+    try {
+      const fonts = await window.queryLocalFonts();
+      const families = new Set();
+      fonts.forEach((font) => {
+        if (!font || typeof font.family !== 'string') return;
+        const family = font.family.trim();
+        if (!family) return;
+        const lower = family.toLowerCase();
+        if (installedFontBlocklist.some((part) => lower.includes(part))) return;
+        families.add(family);
+      });
+      installedFontNames = Array.from(families).sort((a, b) => a.localeCompare(b));
+      refreshLocalFontOptions();
+      setToolStatus(`已读取 ${installedFontNames.length} 个本地字体`);
+    } catch (error) {
+      setToolStatus(error && error.name === 'NotAllowedError' ? '已拒绝本地字体读取权限' : '本地字体读取失败');
+    }
+  };
+  const removeAllLocalFonts = () => {
+    fontFaces.forEach((fontFace) => document.fonts.delete(fontFace));
+    fontFaces.clear();
+    localFonts = [];
+    installedFontNames = [];
+    refreshLocalFontOptions();
+    setToolStatus('已清除本地字体');
+  };
+
+  const suggestedHtmlName = () => {
+    const currentName = decodeURIComponent(window.location.pathname.split('/').pop() || '');
+    if (/\.html?$/i.test(currentName)) return currentName;
+    const safeTitle = (document.title || 'resume').replace(/[\\/:*?"<>|]+/g, '-').trim();
+    return `${safeTitle || 'resume'}.html`;
+  };
+  const serializeHtml = () => {
+    document.dispatchEvent(new Event('resume-before-save'));
+    const clone = document.documentElement.cloneNode(true);
+    const clonedRoot = clone.querySelector('.resume-page');
+    const clonedEditButton = clone.querySelector('[data-action="edit"]');
+    const clonedToolbarTitle = clone.querySelector('.toolbar-title');
+    if (clonedRoot) {
+      clonedRoot.setAttribute('contenteditable', 'false');
+      clonedRoot.classList.remove('is-editing');
+    }
+    clone.querySelectorAll('main.sheet').forEach((page) => page.setAttribute('contenteditable', 'true'));
+    if (clonedEditButton) clonedEditButton.textContent = '编辑';
+    if (clonedToolbarTitle) clonedToolbarTitle.textContent = 'HTML 简历';
+    const clonedStatus = clone.querySelector('#saveStatus');
+    if (clonedStatus) clonedStatus.textContent = '自动保存已开启';
+    if (localFonts.length) {
+      let fontStyle = clone.querySelector('style[data-saved-local-fonts]');
+      if (!fontStyle) {
+        fontStyle = document.createElement('style');
+        fontStyle.setAttribute('data-saved-local-fonts', '');
+        clone.querySelector('head')?.appendChild(fontStyle);
+      }
+      fontStyle.textContent = localFonts.map((font) => {
+        const name = font.name.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+        return `@font-face{font-family:"${name}";src:url(${font.data})}`;
+      }).join('\n');
+    }
+    return '<!doctype html>\n' + clone.outerHTML;
+  };
+  const downloadHtml = (html, name) => {
+    const url = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = name;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  const saveHtml = async () => {
+    const html = serializeHtml();
+    const name = suggestedHtmlName();
+    if (typeof window.showSaveFilePicker === 'function') {
+      try {
+        const handle = await window.showSaveFilePicker({
+          suggestedName: name,
+          types: [{ description: 'HTML 文件', accept: { 'text/html': ['.html', '.htm'] } }]
+        });
+        const writable = await handle.createWritable();
+        await writable.write(new Blob([html], { type: 'text/html;charset=utf-8' }));
+        await writable.close();
+        setToolStatus('HTML 已保存到本地');
+        return;
+      } catch (error) {
+        if (error?.name === 'AbortError') {
+          setToolStatus('已取消保存');
+          return;
+        }
+      }
+    }
+    downloadHtml(html, name);
+    setToolStatus('已下载 HTML 副本');
+  };
+
+  fontSelect?.addEventListener('change', () => {
+    const value = fontSelect.value;
+    if (value === removeLocalFontsValue) {
+      removeAllLocalFonts();
+      fontSelect.value = 'Microsoft YaHei';
+      return;
+    }
+    if (value.startsWith(localFontValuePrefix)) {
+      applyFormat('fontName', `"${value.slice(localFontValuePrefix.length)}", "Microsoft YaHei", sans-serif`);
+      return;
+    }
+    applyFormat('fontName', value);
+  });
+  localFontButton?.addEventListener('click', () => { loadInstalledFonts(); });
+  importFontButton?.addEventListener('click', () => {
+    if (!('FontFace' in window && 'fonts' in document)) {
+      setToolStatus('当前浏览器不支持导入字体文件');
+      return;
+    }
+    fontFileInput?.click();
+  });
+  fontFileInput?.addEventListener('change', async (event) => {
+    const files = Array.from(event.target.files || []);
+    event.target.value = '';
+    if (!files.length) return;
+    setToolStatus('正在导入字体...');
+    for (const file of files) await importFontFile(file);
+    refreshLocalFontOptions();
+  });
+  colorInput?.addEventListener('input', () => applyFormat('foreColor', colorInput.value));
+  boldButton?.addEventListener('click', () => applyFormat('bold'));
+  saveButton?.addEventListener('click', saveHtml);
+  pdfButton?.addEventListener('click', () => window.print());
+})();

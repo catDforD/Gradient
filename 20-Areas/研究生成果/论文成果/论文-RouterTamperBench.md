@@ -7,7 +7,7 @@ aliases:
 tags:
   - type/achievement
   - topic/graduate
-  - topic/agent-security
+  - topic/agent/security
 ---
 
 # RouterTamperBench 论文成果

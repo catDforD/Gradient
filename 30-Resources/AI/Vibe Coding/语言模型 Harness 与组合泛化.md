@@ -10,11 +10,9 @@ published:
 created: 2026-07-24
 description: "Harnesses can lead to compositional generalization: we observe a property in training RLMs, in which similarly structured tasks are viewed as isomorphic and all individual LM calls in the harness become in-distribution."
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/llm-agent"
-  - "topic/harness"
-  - "topic/rlm"
+  - clippings
+  - type/source-note
+  - topic/agent/harness
 ---
 
 # Language model harnesses are compositional generalizers

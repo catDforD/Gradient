@@ -9,9 +9,9 @@ type: source-note
 aliases:
   - "Codex 作为平台：构建于开放 Agent Harness 之上"
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/agent"
+  - clippings
+  - type/source-note
+  - topic/agent
 ---
 # Codex as a platform: build on the open agent harness
 

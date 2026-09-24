@@ -4,12 +4,14 @@ aliases:
   - AI & Coding
 tags:
   - type/moc
-  - topic/ai
+  - topic/agent
 ---
 
 # AI 与 Coding
 
 本地图是当前 vault 中 AI、Agent 与编程实践知识的导航入口。
+
+主题词表：[[知识词表]]。
 
 ## AI Coding 与 Agent
 
@@ -23,6 +25,8 @@ tags:
 
 - [[OSMAS]]：多智能体系统生成论文笔记
 - [[PTC]]：Programmatic Tool Calling 概念笔记
+- [[SSE]]：服务器到客户端的单向事件流机制
+- [[Streamable HTTP]]：MCP 的 HTTP 流式传输方式
 - [[语言模型 Harness 与组合泛化]]：以 RLM 为例理解 harness 如何支持组合泛化
 - [[长时运行 Agent 的有效 Harness]]：跨上下文窗口持续推进编码任务的环境与交接设计
 - [[构建多 Agent 研究系统]]：编排、评估与生产可靠性的多 Agent 研究系统实践

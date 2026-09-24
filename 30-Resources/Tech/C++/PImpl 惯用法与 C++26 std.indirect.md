@@ -8,8 +8,7 @@ published: 2026-07-24
 created: 2026-07-24
 tags:
   - type/source-note
-  - topic/cpp
-  - topic/pimpl
+  - topic/engineering/cpp
 ---
 
 # PImpl 惯用法与 C++26 std::indirect

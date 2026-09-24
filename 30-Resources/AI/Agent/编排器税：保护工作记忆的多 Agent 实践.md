@@ -10,9 +10,9 @@ type: source-note
 aliases:
   - "编排器税：保护工作记忆的多 Agent 实践"
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/agent"
+  - clippings
+  - type/source-note
+  - topic/agent
 ---
 # The Orchestrator's Tax
 

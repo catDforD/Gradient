@@ -1,0 +1,35 @@
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.9)  22 SEP 2026 20:08
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./20-Areas/实习与求职/简历与作品集/蚂蚁AgentTeam-定制简历/resume-ant-agentteam-router-research
+-v1.tex
+
+(20-Areas/实习与求职/简历与作品集/蚂蚁AgentTeam-定制简历/resume-ant-agentteam-router-research-v1
+.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+
+! LaTeX Error: File `resume.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.6 \usepackage
+               {NotoSerifCJKsc_external}^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 21 strings out of 402629
+ 692 string characters out of 5444510
+ 428017 words of memory out of 5000000
+ 29173 multiletter control sequences out of 15000+600000
+ 627721 words of font info for 40 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 19i,0n,29p,165b,17s stack positions out of 10000i,1000n,20000p,200000b,200000s
+No pages of output.

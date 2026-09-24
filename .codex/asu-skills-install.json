@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/Hisn00w/ASu-skills",
+  "commit": "694e71374cff63a7f334cb040828e37d7c3b6a12",
+  "version": "0.4.0",
+  "source": "plugins/asu-skills",
+  "marketplace": "gradient-local",
+  "scope": "project",
+  "local_adjustments": [
+    "Copied the make-resume icon into its own assets directory and changed both agents/openai.yaml icon paths to ./assets/asu-circle.png for Codex package validation."
+  ]
+}

@@ -4,7 +4,7 @@ status: 复习中
 tags:
   - type/question-bank
   - topic/career
-  - topic/agent
+  - topic/engineering/ai-coding
 ---
 
 # AI Coding 与工程素养

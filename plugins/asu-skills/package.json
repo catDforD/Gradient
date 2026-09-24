@@ -1,0 +1,69 @@
+{
+  "name": "asu-skills",
+  "version": "0.4.0",
+  "description": "中文求职工作流 skills：开源贡献、AI 编程对话复盘、项目导学面经、简历提升、可编辑简历制作、岗位匹配、简历投递填写、面试准备和秋招进度管理（DeepSeek Harness 插件包）。",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "export:pdf": "node scripts/export-resume-pdf.mjs",
+    "build:asu-resume": "node scripts/build-asu-resume.mjs",
+    "check:asu-resume": "node scripts/build-asu-resume.mjs --check",
+    "build:templates": "node scripts/inline-template.mjs --all dist/templates",
+    "build:latex-resume": "node scripts/build-latex-resume.mjs",
+    "sync:skills": "node scripts/sync-skill-catalog.mjs",
+    "sync:skills:check": "node scripts/sync-skill-catalog.mjs --check",
+    "validate:skills": "python3 scripts/validate_skills.py",
+    "test:python": "python3 -m unittest discover -s tests -t . -v",
+    "test": "node --test"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "skills",
+    "scripts",
+    "assets",
+    "references",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "agent-skill",
+    "resume",
+    "job-search",
+    "job-match",
+    "job-application",
+    "browser-automation",
+    "career",
+    "open-source",
+    "chinese",
+    "project-analysis",
+    "contributor",
+    "evidence-recap",
+    "project-guide",
+    "great-resume",
+    "make-resume",
+    "job-apply",
+    "interview",
+    "offer"
+  ],
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hisn00w/ASu-skills.git"
+  },
+  "homepage": "https://github.com/Hisn00w/ASu-skills",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

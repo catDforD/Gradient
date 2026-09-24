@@ -10,9 +10,9 @@ type: source-note
 aliases:
   - "AI 时代说“是”的成本变化"
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/ai-coding"
+  - clippings
+  - type/source-note
+  - topic/engineering/ai-coding
 ---
 # The cost of saying yes has changed
 

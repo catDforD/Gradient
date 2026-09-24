@@ -2,7 +2,7 @@
 type: resource
 tags:
   - type/resource
-  - topic/coding-agent
+  - topic/agent/coding-agent
 ---
 
 # AI Coding 与 Agent 课程

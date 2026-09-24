@@ -1,8 +1,8 @@
 ---
 type: evergreen-note
 tags:
-  - type/evergreen-note
-  - topic/vibe-coding
+  - type/concept
+  - topic/engineering/ai-coding
 ---
 
 # Vibe Coding 心法

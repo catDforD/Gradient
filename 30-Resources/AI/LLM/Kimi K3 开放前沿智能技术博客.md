@@ -7,10 +7,10 @@ published:
 created: 2026-07-26
 description: "Kimi K3 is the world's first open 3T-class model — frontier performance across coding, knowledge work, and reasoning, with native multimodality and 1M context."
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/llm"
-  - "topic/ai-coding"
+  - clippings
+  - type/source-note
+  - topic/llm
+  - topic/engineering/ai-coding
 type: source-note
 aliases:
   - "Kimi K3 开放前沿智能技术博客"

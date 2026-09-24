@@ -3,7 +3,7 @@ type: book-note
 status: reading
 tags:
   - type/book-note
-  - topic/information-theory
+  - topic/science/information-theory
 ---
 
 # 信息论基础（Thomas M. Cover）

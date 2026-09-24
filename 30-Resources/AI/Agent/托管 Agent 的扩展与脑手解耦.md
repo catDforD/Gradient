@@ -6,10 +6,10 @@ published:
 created: 2026-07-26
 description: "Anthropic is an AI safety and research company that's working to build reliable, interpretable, and steerable AI systems."
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/ai-agent"
-  - "topic/agent-harness"
+  - clippings
+  - type/source-note
+  - topic/agent
+  - topic/agent/harness
 type: source-note
 aliases:
   - "托管 Agent 的扩展与脑手解耦"

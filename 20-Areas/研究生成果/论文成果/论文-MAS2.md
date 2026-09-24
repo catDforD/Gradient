@@ -6,7 +6,7 @@ aliases:
 tags:
   - type/achievement
   - topic/graduate
-  - topic/multi-agent-systems
+  - topic/agent/multi-agent
 ---
 
 # MAS² 论文成果

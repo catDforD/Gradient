@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "profile": {
+    "candidate_id": "catDforD",
+    "target_roles": [
+      "Agent Safety / LLM Evaluation 工程",
+      "Agent 开发 / Agent Harness 实习"
+    ],
+    "updated_at": "2026-09-22"
+  },
+  "claims": [
+    {
+      "id": "chemsec-eval-001",
+      "source_fact": "2026-04-09 至 2026-04-10 的本人提交建立 Inspect AI 评测脚手架、攻击条件任务和 LLM judge 拒答评分器；后续 README 保留内容、Agent 工具和多轮隐私三类入口。",
+      "candidate_wording": "基于 Inspect AI 搭建化学场景安全评测链路，覆盖内容安全、Agent 工具安全和多轮隐私；统一任务、攻击条件、LLM-as-a-judge 评分与规则回退，支持模型和业务 Agent 接入。",
+      "sources": [
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/ChemSec-Eval/commit/6967f791c2bb3d1ac7af5b0c1df88420149f1310",
+          "public": true
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/ChemSec-Eval/commit/230cb297d291a5421e5060a842f33265b0f76667",
+          "public": true
+        },
+        {
+          "type": "project_note",
+          "location": "20-Areas/研究生成果/项目经历/项目-ChemSec-Eval.md",
+          "public": false
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent Safety / LLM Evaluation 工程简历",
+        "Agent 开发 / Harness 方向简历"
+      ],
+      "interview_details": {
+        "decisions": [
+          "用 Inspect task 组织被测系统，用 LLM judge 判断是否实质性满足风险请求，解析失败时回退规则。",
+          "把攻击方法作为横向条件，与数据源和风险类别组合。"
+        ],
+        "difficulties": [
+          "LLM judge 与规则回退如何区分拒答、网关拦截、超时、错误和未知状态？"
+        ],
+        "verification": [
+          "本人提交记录、README 和项目档案交叉核对；未在本轮重新执行全量评测。"
+        ],
+        "result": "形成可复用的统一评测入口和分层结果记录。"
+      },
+      "boundary": "不声称独立设计全部 taxonomy 或单独负责所有实验执行；不把项目整体能力自动归因于个人。",
+      "risk_notes": [
+        "目标岗位不同可把三类安全方向展开或压缩；最终分工仍需本人补充。"
+      ],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "chemsec-eval-002",
+      "source_fact": "2026-04-16 和 2026-05-06 的本人提交增加单任务/批量数据生成、风险规格、知识种子、Agent 安全样本生成和拒答评分改进。",
+      "candidate_wording": "开发单任务与批量安全数据生成工具，结合风险规格和知识种子扩展评测样本，并改进 Agent 安全样本生成与拒答评分逻辑。",
+      "sources": [
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/ChemSec-Eval/commit/7941a527b97a9b6bb590124638fa9ccdd8540246",
+          "public": true
+        },
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/ChemSec-Eval/commit/dc286befe18e133e04ce7be40c5356d46c1e767f",
+          "public": true
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent Safety / LLM Evaluation 工程简历"
+      ],
+      "interview_details": {
+        "decisions": [
+          "批量生成器按任务和输出文件组织并发写入；样本带风险规格和 taxonomy 元数据。",
+          "评分器增加中文拒答模式并保留 LLM judge 的失败回退。"
+        ],
+        "difficulties": [
+          "如何避免生成数据模板化、风险标签漂移或把错误/过度拒答混入同一指标？"
+        ],
+        "verification": [
+          "提交 diff 与项目档案交叉核对；未声称数据已去重或全部进入最终展示分母。"
+        ],
+        "result": "形成可批量扩展、可校验的评测数据生产流程。"
+      },
+      "boundary": "不把仓库当前 10 万+静态记录数写成个人独立生成量；不把阶段数据总数当作去重样本数。",
+      "risk_notes": [],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "chemsec-eval-003",
+      "source_fact": "2026-04-29 的本人提交新增 shim.xcurve_service、协议说明和测试，将 XCurve 的流式接口转换为 Inspect 可调用的 OpenAI-compatible /v1/chat/completions。",
+      "candidate_wording": "开发 XCurve 的 OpenAI-compatible 适配服务和接口测试，保留多轮消息、会话隔离与 SSE 工具 trace，使业务 Agent 可复用 Inspect 评测流程。",
+      "sources": [
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/ChemSec-Eval/commit/29a4a17688d12cf51a85e01c6bd6c8726d2494d1",
+          "public": true
+        },
+        {
+          "type": "project_note",
+          "location": "20-Areas/研究生成果/项目经历/项目-ChemSec-Eval.md",
+          "public": false
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent Safety / LLM Evaluation 工程简历",
+        "Agent 开发 / Harness 方向简历"
+      ],
+      "interview_details": {
+        "decisions": [
+          "在 HTTP 边界保持 OpenAI 兼容，避免改写 Inspect task 和 scorer。",
+          "把 XCurve 内部工具事件放进 trace，不伪装成需要客户端执行的 OpenAI tool_calls。",
+          "为每个 benchmark case 默认生成隔离 context_link，同时支持 session_id 保持多轮连续性。"
+        ],
+        "difficulties": [
+          "SSE 流中断或超时时如何保留已发生的工具事件，并区分基础设施超时与工具触发超时？"
+        ],
+        "verification": [
+          "提交中的 shim、文档和单元测试静态核对；未连接线上 XCurve 服务重跑 smoke eval。"
+        ],
+        "result": "让非 OpenAI 原生协议的业务 Agent 接入现有 Inspect 评测链路。"
+      },
+      "boundary": "不声称实现 XCurve 上游 Agent 或其内部工具；个人贡献是协议适配、上下文处理、trace 记录和测试。",
+      "risk_notes": [],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "chemsec-eval-004",
+      "source_fact": "2026-05-26 的本人提交集成化学风险知识检索、LLM safety advisor、多轮隐私会话状态、响应侧扫描和组合护栏；项目文档将其打包为独立可接入的 composition。",
+      "candidate_wording": "集成化学风险知识检索、会话级隐私累积与响应扫描，封装可独立接入的组合护栏，覆盖输入建议、阈值阻断和输出泄露替换。",
+      "sources": [
+        {
+          "type": "source_code",
+          "location": "https://github.com/catDforD/ChemSec-Eval/commit/f366f65d0ebf7bfe1634d9bbafc1fe5566736645",
+          "public": true
+        },
+        {
+          "type": "project_note",
+          "location": "20-Areas/研究生成果/项目经历/项目-ChemSec-Eval.md",
+          "public": false
+        }
+      ],
+      "responsibility_level": "负责模块",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent Safety / LLM Evaluation 工程简历",
+        "Agent 开发 / Harness 方向简历"
+      ],
+      "interview_details": {
+        "decisions": [
+          "将 KG 化学风险检测与 LLM safety advisor 串成统一输入管线，并用会话 ID 隔离多轮风险。",
+          "上游响应返回后再做内部信息泄露扫描和规则替换，避免只在输入侧拦截。"
+        ],
+        "difficulties": [
+          "为什么单轮化学风险建议不直接等同于阻断？隐私阈值和响应扫描分别覆盖什么风险？"
+        ],
+        "verification": [
+          "组合护栏提交、设计文档和项目档案交叉核对；生产部署范围尚未确认。"
+        ],
+        "result": "形成包含状态、检索、输入建议和输出校验的可独立集成护栏包。"
+      },
+      "boundary": "不声称已正式上线或独立负责整个业务 Agent；护栏覆盖的是项目评测和集成链路，部署范围待确认。",
+      "risk_notes": [],
+      "last_verified": "2026-09-22"
+    },
+    {
+      "id": "chemsec-eval-005",
+      "source_fact": "本人确认成果展示页为最终评测口径；内容、Agent、隐私三类攻击成功率分别从 34.8%、58.7%、68.9% 降至 4.4%、6.1%、4.7%，展示页报告护栏覆盖率 94.3%。",
+      "candidate_wording": "最终评测中，内容、Agent、隐私三类攻击成功率分别由 34.8%、58.7%、68.9% 降至 4.4%、6.1%、4.7%，护栏覆盖率 94.3%。",
+      "sources": [
+        {
+          "type": "user_confirmed_showcase",
+          "location": "https://1371149.github.io/jingtai.github.io/",
+          "public": true,
+          "note": "项目档案记录本人于 2026-09-09 确认采用成果展示页最终口径。"
+        },
+        {
+          "type": "project_note",
+          "location": "20-Areas/研究生成果/项目经历/项目-ChemSec-Eval.md",
+          "public": false
+        }
+      ],
+      "responsibility_level": "参与",
+      "verification_status": "已确认",
+      "allowed_uses": [
+        "Agent Safety / LLM Evaluation 工程简历",
+        "晶泰科技实习经历"
+      ],
+      "interview_details": {
+        "decisions": [
+          "简历采用展示页最终结果，不把 6 月阶段摘要和后续阶段对比报告混成同一实验分母。"
+        ],
+        "difficulties": [
+          "三类 ASR 的模型、数据版本、分母和基线如何定义？个人动作如何归因到团队结果？"
+        ],
+        "verification": [
+          "本人确认展示页口径；当前材料未补齐全部模型和数据版本日志。"
+        ],
+        "result": "提供可核对的项目结果证据，不等同于个人单独实现全部降幅。"
+      },
+      "boundary": "这是项目最终评测结果，不能写成个人独立提升；不把 score_pass 或覆盖率解释为正常业务可用率或生产 SLA。",
+      "risk_notes": [
+        "面试前需准备三类指标的被测系统、数据版本和分母口径。"
+      ],
+      "last_verified": "2026-09-22"
+    }
+  ]
+}

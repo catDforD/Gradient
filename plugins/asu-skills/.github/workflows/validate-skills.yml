@@ -1,0 +1,92 @@
+name: validate-skills
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+      - '.codex-plugin/**'
+      - '.trae-plugin/**'
+      - '.claude-plugin/**'
+      - '.opencode-plugin/**'
+      - '.qoder-plugin/**'
+      - 'skills.registry.json'
+      - 'package.json'
+      - 'assets/asu-resume/**'
+      - 'assets/latex-resume/**'
+      - 'assets/asu-resume-template.html'
+      - 'assets/frame/**'
+      - 'assets/templates-html/**'
+      - 'docs/index.html'
+      - 'lib/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/validate-skills.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'skills/**'
+      - '.codex-plugin/**'
+      - '.trae-plugin/**'
+      - '.claude-plugin/**'
+      - '.opencode-plugin/**'
+      - '.qoder-plugin/**'
+      - 'skills.registry.json'
+      - 'package.json'
+      - 'assets/asu-resume/**'
+      - 'assets/latex-resume/**'
+      - 'assets/asu-resume-template.html'
+      - 'assets/frame/**'
+      - 'assets/templates-html/**'
+      - 'docs/index.html'
+      - 'lib/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/validate-skills.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate skills metadata
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run skill validator
+        run: python3 scripts/validate_skills.py
+
+      - name: Run unit tests
+        run: python3 -m unittest discover -s tests -t . -v
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.19.0'
+
+      - name: Check skill catalog sync
+        run: node scripts/sync-skill-catalog.mjs --check
+
+      - name: Run JavaScript tests
+        run: node --test
+
+      - name: Check JavaScript syntax
+        run: |
+          while IFS= read -r -d '' file; do
+            node --check "$file"
+          done < <(find lib scripts -type f \( -name '*.js' -o -name '*.mjs' \) -print0)
+
+      - name: Build all resume templates
+        run: |
+          node scripts/build-asu-resume.mjs --check
+          node scripts/inline-template.mjs --all "$RUNNER_TEMP/templates"
+
+      - name: Check package contents
+        run: npm pack --dry-run

@@ -9,9 +9,9 @@ type: source-note
 aliases:
   - "Agentic AI 时代的科学计算"
 tags:
-  - "clippings"
-  - "type/source-note"
-  - "topic/scientific-computing"
+  - clippings
+  - type/source-note
+  - topic/agent/scientific-computing
 ---
 # Scientific computing in the age of agentic AI
 

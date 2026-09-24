@@ -3,7 +3,7 @@ type: resume-draft
 status: draft
 tags:
   - topic/career
-  - topic/multi-agent-systems
+  - topic/agent/multi-agent
 ---
 
 # 蚂蚁 Agent Team 定制简历说明

@@ -4,7 +4,7 @@ aliases:
   - OSMAS 笔记
 tags:
   - type/paper-note
-  - topic/multi-agent-systems
+  - topic/agent/multi-agent
   - topic/agent
 ---
 

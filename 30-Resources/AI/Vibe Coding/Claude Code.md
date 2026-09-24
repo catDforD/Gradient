@@ -2,7 +2,7 @@
 type: source-note
 tags:
   - type/source-note
-  - topic/coding-agent
+  - topic/agent/coding-agent
 ---
 
 # Claude Code 原理
