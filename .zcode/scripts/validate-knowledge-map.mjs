@@ -194,8 +194,26 @@ for (const file of nodeFiles) {
     names.get(name).push(relativeFile);
   }
 
+}
+
+// 关系只允许在一侧登记（related 尤其如此），因此判断孤立节点时还要计入其他节点指向本节点的边。
+const inbound = new Set();
+for (const { fm } of nodes) {
+  const relations = fm.relations || {};
+  for (const value of Object.values(relations)) {
+    for (const item of Array.isArray(value) ? value : value ? [value] : []) {
+      const target = normalizeTarget(item);
+      const resolved = target ? resolveNote(target) : null;
+      if (resolved) inbound.add(resolved);
+    }
+  }
+}
+for (const { file, fm } of nodes) {
+  const relations = fm.relations || {};
   const relationCount = Object.values(relations).reduce((sum, value) => sum + (Array.isArray(value) ? value.length : value ? 1 : 0), 0);
-  if (relationCount === 0) warnings.push(`${relativeFile} — 没有关系；若不是根节点，请补充关系`);
+  if (relationCount === 0 && !inbound.has(file.replace(/\.md$/, ''))) {
+    warnings.push(`${file} — 既没有声明关系，也没有其他节点指向它；若不是根节点，请补充关系`);
+  }
 }
 
 for (const [name, files] of names) if (files.length > 1) problems.push(`显示名或别名冲突：「${name}」出现在 ${files.join('、')}`);

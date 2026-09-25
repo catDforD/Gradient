@@ -18,7 +18,7 @@ status: active
 
 # Streamable HTTP
 
-> 一句话定义：Streamable HTTP 是 MCP 的一种 HTTP 传输方式：服务器提供同时支持 POST 和 GET 的单一 MCP 端点，客户端通过 POST 发送 JSON-RPC 消息，服务器可返回单个 JSON 对象或使用 SSE 流式返回消息。
+> Streamable HTTP 是 MCP 的一种 HTTP 传输方式：服务器提供同时支持 POST 和 GET 的单一 MCP 端点，客户端通过 POST 发送 JSON-RPC 消息，服务器可返回单个 JSON 对象或使用 SSE 流式返回消息。
 
 ## 展开
 

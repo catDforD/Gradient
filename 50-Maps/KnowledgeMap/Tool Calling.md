@@ -8,6 +8,8 @@ tags:
 sources:
   - "[[30-Resources/Tech/PTC#两种模式的根本区别]]"
   - "[[30-Resources/Tech/PTC#PTC 最重要的优势]]"
+  - "[[20-Areas/实习与求职/面试题与经验/AI-Agent与大模型岗位面经汇总-01至05-07-08#面经 07]]"
+  - "[[20-Areas/实习与求职/面试题与经验/AI-Agent开发岗位面经汇总-2026年4月-01至07#面经 03｜AI Agent 开发｜2026-04-15]]"
 relations:
   broader_than: []
   instantiates: []

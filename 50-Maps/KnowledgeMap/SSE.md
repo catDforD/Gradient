@@ -8,6 +8,7 @@ aliases:
 sources:
   - "https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events"
   - "[[20-Areas/实习与求职/面试题与经验/小红书-Agent服务端开发实习-一面面经#项目与 Agent 服务端]]"
+  - "[[20-Areas/实习与求职/面试题与经验/AI-Agent开发岗位面经汇总-2026年4月-01至07#面经 05｜AI Agent 开发｜2026-04-15]]"
 relations:
   broader_than: []
   instantiates: []
@@ -21,7 +22,7 @@ status: active
 
 # SSE
 
-> 一句话定义：SSE（Server-Sent Events）是一种基于 HTTP 的服务器到客户端单向事件流机制，客户端建立连接后，服务器以事件流持续发送数据，客户端不能通过同一 SSE 连接向服务器发送事件。
+> SSE（Server-Sent Events）是一种基于 HTTP 的服务器到客户端单向事件流机制，客户端建立连接后，服务器以事件流持续发送数据，客户端不能通过同一 SSE 连接向服务器发送事件。
 
 ## 展开
 
